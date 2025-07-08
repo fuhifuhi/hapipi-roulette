@@ -1,110 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>はぴぴルーレット</title>
   <style>
     body {
+      background-color: #ffe3ec; /* チェゴシムっぽいピンク */
       font-family: sans-serif;
-      background-color: #fff;
       text-align: center;
-      margin: 0;
-      padding: 1em;
+      padding: 60px 20px;
     }
-
     h1 {
-      font-size: 1.8em;
-      color: #ff6b6b;
-      margin-bottom: 0.3em;
+      color: #e6007e;
+      font-size: 2em;
     }
-
-    p.description {
-      font-size: 0.95em;
-      color: #555;
-      margin-bottom: 1.2em;
-      white-space: pre-line;
-    }
-
-    #roulette-container {
-      position: relative;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: block;
-    }
-
-    #stopOverlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      cursor: pointer;
-      z-index: 2;
-      background: transparent;
-    }
-
-    #startBtn {
-      margin-top: 1em;
-      padding: 12px 24px;
+    .desc {
       font-size: 1em;
-      font-weight: bold;
-      background-color: #ffd93d;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 3;
+      margin: 10px 0 30px;
     }
-
-    #startBtn:hover {
-      background-color: #ffbc00;
+    .start-btn {
+      font-weight: bold;
+      background: yellow;
+      padding: 6px 12px;
+      display: inline-block;
+      margin-top: 20px;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
-
   <h1>🎉 はぴぴルーレット 🎉</h1>
-
-  <p class="description">
-スタートボタンを押して画面をタップすると<br>
-ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
-何度でもチャレンジしてね！
+  <p class="desc">
+    スタートボタンを押して画面をタップすると<br>
+    ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
+    何度でもチャレンジしてね！
   </p>
-
-  <div id="roulette-container">
-    <video id="roulette" playsinline muted loop>
-      <source src="hapipi-roulette.mp4" type="video/mp4" />
-    </video>
-    <div id="stopOverlay"></div>
-  </div>
-
-  <div>
-    <button id="startBtn">スタート！</button>
-  </div>
-
-  <script>
-    const video = document.getElementById("roulette");
-    const stopOverlay = document.getElementById("stopOverlay");
-    const startBtn = document.getElementById("startBtn");
-
-    // 初期状態で停止
-    video.pause();
-    video.currentTime = 0;
-
-    startBtn.addEventListener("click", () => {
-      video.play();
-    });
-
-    stopOverlay.addEventListener("click", () => {
-      video.pause();
-    });
-  </script>
-
+  <div class="start-btn">スタート！</div>
 </body>
 </html>
