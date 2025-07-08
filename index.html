@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ハピピルーレット</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: sans-serif;
       background-color: #fff8e1;
       text-align: center;
@@ -29,7 +28,7 @@
 
     #roulette {
       width: 100%;
-      display: none; /* 最初は非表示 */
+      display: none; /* 初期状態では非表示 */
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0,0,0,0.2);
     }
@@ -40,13 +39,13 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       color: #333;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      font-size: 1.5em;
+      font-size: 1.4em;
       z-index: 2;
       border-radius: 12px;
     }
@@ -60,7 +59,6 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      z-index: 3;
     }
 
     #startBtn:hover {
@@ -69,17 +67,10 @@
 
     @media screen and (max-width: 480px) {
       h1 {
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
-
-      #startBtn {
-        font-size: 1em;
-        padding: 10px 20px;
-      }
-
       #overlay {
-        font-size: 1.2em;
-        padding: 1em;
+        font-size: 1.1em;
       }
     }
   </style>
@@ -89,7 +80,7 @@
   <h1>🎉 ハピピルーレット 🎉</h1>
 
   <div id="roulette-container">
-    <img id="roulette" src="hapipi-roulette.gif" alt="ルーレットGIF">
+    <img id="roulette" src="" alt="ルーレットGIF" />
     <div id="overlay">
       <div>ルーレットスタート！</div>
       <button id="startBtn">スタートする</button>
@@ -102,12 +93,17 @@
     const roulette = document.getElementById("roulette");
 
     startBtn.addEventListener("click", () => {
-      overlay.style.display = "none";      // オーバーレイを非表示
-      roulette.style.display = "block";    // GIF表示
-      roulette.src = "";                   // GIFリセット
+      // GIF表示
+      roulette.style.display = "block";
+
+      // オーバーレイを非表示
+      overlay.style.display = "none";
+
+      // GIFリセットしてから再設定
+      roulette.src = "";
       setTimeout(() => {
-        roulette.src = "hapipi-roulette.gif"; // 再生開始
-      }, 50);
+        roulette.src = "hapipi-roulette.gif";
+      }, 100);
     });
   </script>
 
