@@ -43,4 +43,30 @@
     何度でもチャレンジしてね！
   </p>
 
-  <div class="start-btn" onclick="startRoul
+  <div class="start-btn" onclick="startRoulette()">スタート！</div>
+
+  <video id="roulette" muted playsinline loop>
+    <source src="hapipi-roulette.mp4" type="video/mp4">
+    お使いのブラウザは video タグをサポートしていません。
+  </video>
+
+  <script>
+    const video = document.getElementById('roulette');
+    let isPlaying = false;
+
+    function startRoulette() {
+      video.style.display = 'block';
+      video.currentTime = 0;
+      video.play();
+      isPlaying = true;
+    }
+
+    video.addEventListener('click', () => {
+      if (isPlaying) {
+        video.pause();
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
+</html>
