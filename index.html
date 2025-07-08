@@ -1,80 +1,51 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>はぴぴルーレット</title>
   <style>
     body {
-      background-color: #ffe3ed;
-      font-family: "Arial", sans-serif;
+      background-color: #ffdce5;
       text-align: center;
-      margin: 0;
-      padding: 20px;
+      font-family: sans-serif;
+      padding-top: 40px;
     }
-
     h1 {
-      font-size: 2rem;
-      color: #e6007e;
-      margin-bottom: 10px;
+      color: deeppink;
     }
-
-    p {
-      font-size: 1rem;
-      color: #333;
-      margin: 0 0 20px;
-    }
-
-    #video-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    video {
-      width: 300px;
-      height: 300px;
-      background-color: white;
-    }
-
-    button {
-      font-size: 1rem;
+    #startButton {
+      margin-top: 20px;
       background-color: yellow;
       border: none;
       padding: 10px 20px;
-      cursor: pointer;
       font-weight: bold;
+      font-size: 16px;
       border-radius: 8px;
-    }
-
-    button:hover {
-      background-color: #ffea00;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1>🎉 はぴぴルーレット 🎉</h1>
   <p>スタートボタンを押して画面をタップすると<br>
-    ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
-    何度でもチャレンジしてね！
+     ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
+     何度でもチャレンジしてね！
   </p>
 
-  <div id="video-container">
-    <video id="rouletteVideo" src="hapipi-roulette.mp4" muted loop></video>
-  </div>
+  <video id="rouletteVideo" src="hapipi-roulette.mp4" muted loop
+    style="width: 300px; height: 300px; object-fit: contain; background-color: #ffdce5;">
+  </video>
 
-  <button id="startBtn">スタート！</button>
+  <div>
+    <button id="startButton">スタート！</button>
+  </div>
 
   <script>
     const video = document.getElementById("rouletteVideo");
-    const startBtn = document.getElementById("startBtn");
+    const button = document.getElementById("startButton");
 
-    startBtn.addEventListener("click", () => {
+    button.addEventListener("click", () => {
       video.play();
-    });
-
-    video.addEventListener("click", () => {
-      video.pause();
     });
   </script>
 </body>
