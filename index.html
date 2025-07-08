@@ -27,10 +27,13 @@
       border-radius: 6px;
       cursor: pointer;
     }
-    video {
-      width: 80%;
+    #preview, #roulette {
+      margin: 30px auto 0;
       max-width: 400px;
-      margin-top: 30px;
+      width: 80%;
+      display: block;
+    }
+    #roulette {
       display: none;
     }
   </style>
@@ -43,20 +46,26 @@
     何度でもチャレンジしてね！
   </p>
 
+  <!-- 初期表示のGIFや画像 -->
+  <img id="preview" src="./hapipi-roulette.gif" alt="ルーレット プレビュー">
+
   <div class="start-btn" onclick="startRoulette()">スタート！</div>
 
+  <!-- スタート後に表示される動画 -->
   <video id="roulette" muted playsinline loop>
-    <source src="hapipi-roulette.mp4" type="video/mp4">
+    <source src="./hapipi-roulette.mp4" type="video/mp4">
     お使いのブラウザは video タグをサポートしていません。
   </video>
 
   <script>
     const video = document.getElementById('roulette');
+    const preview = document.getElementById('preview');
     let isPlaying = false;
 
     function startRoulette() {
-      video.style.display = 'block';
-      video.currentTime = 0;
+      preview.style.display = 'none';     // GIFを非表示
+      video.style.display = 'block';      // 動画を表示
+      video.load();
       video.play();
       isPlaying = true;
     }
