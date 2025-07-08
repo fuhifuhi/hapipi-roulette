@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: sans-serif;
-      background-color: #fff8e1;
+      background-color: #fff;
       text-align: center;
       margin: 0;
       padding: 1em;
@@ -20,19 +20,31 @@
     }
 
     #roulette-container {
+      position: relative;
       max-width: 350px;
       margin: 0 auto;
-      position: relative;
     }
 
     video {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: none;
+      display: block;
     }
 
-    .btn {
+    #stopOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 2;
+      background: transparent;
+    }
+
+    #startBtn {
+      margin-top: 1em;
       padding: 12px 24px;
       font-size: 1em;
       font-weight: bold;
@@ -40,10 +52,10 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      margin-top: 1em;
+      z-index: 3;
     }
 
-    .btn:hover {
+    #startBtn:hover {
       background-color: #ffbc00;
     }
   </style>
@@ -54,34 +66,30 @@
 
   <div id="roulette-container">
     <video id="roulette" playsinline muted loop>
-      <source src="hapipi-roulette.mp4" type="video/mp4">
+      <source src="hapipi-roulette.mp4" type="video/mp4" />
     </video>
+    <div id="stopOverlay"></div>
+  </div>
 
-    <button id="startBtn" class="btn">スタート！</button>
-    <button id="stopBtn" class="btn" style="display: none;">ストップ！</button>
+  <div>
+    <button id="startBtn">スタート！</button>
   </div>
 
   <script>
     const video = document.getElementById("roulette");
+    const stopOverlay = document.getElementById("stopOverlay");
     const startBtn = document.getElementById("startBtn");
-    const stopBtn = document.getElementById("stopBtn");
+
+    // 初期状態で停止
+    video.pause();
+    video.currentTime = 0;
 
     startBtn.addEventListener("click", () => {
-      video.style.display = "block";
-      startBtn.style.display = "none";
-      stopBtn.style.display = "inline-block";
-      video.currentTime = 0;
       video.play();
     });
 
-    stopBtn.addEventListener("click", () => {
+    stopOverlay.addEventListener("click", () => {
       video.pause();
-      stopBtn.style.display = "none";
-
-      // 結果を表示（ランダム）
-      const results = ["🎯 大吉", "😊 中吉", "🙂 小吉", "😐 末吉", "😢 はずれ"];
-      const result = results[Math.floor(Math.random() * results.length)];
-      alert("結果： " + result);
     });
   </script>
 
