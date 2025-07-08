@@ -5,7 +5,7 @@
   <title>はぴぴルーレット</title>
   <style>
     body {
-      background-color: #ffdce5; /* チェゴシム風ピンク */
+      background-color: white;
       text-align: center;
       font-family: sans-serif;
       padding-top: 40px;
@@ -28,13 +28,13 @@
       width: 300px;
       height: 300px;
       margin: 0 auto;
-      background-color: #ffdce5;
+      background-color: white;
     }
     #rouletteVideo {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background-color: #ffdce5;
+      background-color: white;
     }
     #stopOverlay {
       position: absolute;
@@ -62,20 +62,4 @@
 
   <button id="startButton">スタート！</button>
 
-  <script>
-    const video = document.getElementById("rouletteVideo");
-    const startButton = document.getElementById("startButton");
-    const stopOverlay = document.getElementById("stopOverlay");
-
-    startButton.addEventListener("click", () => {
-      video.play();
-    });
-
-    stopOverlay.addEventListener("click", () => {
-      if (!video.paused) {
-        video.pause();
-      }
-    });
-  </script>
-</body>
-</html>
+  <scrip
