@@ -1,77 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>はぴぴルーレット</title>
   <style>
     body {
-      background-color: #ffe3ed; /* チェゴシム風ピンク */
+      background-color: #ffe3ed;
       font-family: "Arial", sans-serif;
       text-align: center;
+      margin: 0;
       padding: 20px;
     }
 
     h1 {
-      color: deeppink;
       font-size: 2rem;
+      color: #e6007e;
+      margin-bottom: 10px;
     }
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
+    p {
+      font-size: 1rem;
+      color: #333;
+      margin: 0 0 20px;
     }
 
-    .media-wrapper {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      margin: 30px auto;
+    #video-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
     }
 
-    #staticImage, #rouletteVideo {
-      width: 100%;
-      display: none;
-    }
-
-    #staticImage {
-      display: block; /* 初期表示は画像 */
+    video {
+      width: 300px;
+      height: 300px;
+      background-color: white;
     }
 
     button {
-      background-color: yellow;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
       font-size: 1rem;
-      margin-top: 10px;
+      background-color: yellow;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background-color: #ffea00;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎉 はぴぴルーレット 🎉</h1>
-    <p>スタートボタンを押して画面をタップすると<br>
+  <h1>🎉 はぴぴルーレット 🎉</h1>
+  <p>スタートボタンを押して画面をタップすると<br>
     ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
-    何度でもチャレンジしてね！</p>
+    何度でもチャレンジしてね！
+  </p>
 
-    <div class="media-wrapper">
-      <img id="staticImage" src="hapipi-roulette.gif" alt="静止画">
-      <video id="rouletteVideo" src="hapipi-roulette.mp4" autoplay muted playsinline></video>
-    </div>
-
-    <button onclick="startRoulette()">スタート！</button>
+  <div id="video-container">
+    <video id="rouletteVideo" src="hapipi-roulette.mp4" muted loop></video>
   </div>
 
+  <button id="startBtn">スタート！</button>
+
   <script>
-    function startRoulette() {
-      const img = document.getElementById("staticImage");
-      const video = document.getElementById("rouletteVideo");
-      img.style.display = "none";
-      video.style.display = "block";
-      video.currentTime = 0;
+    const video = document.getElementById("rouletteVideo");
+    const startBtn = document.getElementById("startBtn");
+
+    startBtn.addEventListener("click", () => {
       video.play();
-    }
+    });
+
+    video.addEventListener("click", () => {
+      video.pause();
+    });
   </script>
 </body>
 </html>
