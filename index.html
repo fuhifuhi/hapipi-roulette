@@ -2,47 +2,75 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>はぴぴルーレット</title>
+  <title>ハピピルーレット</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: sans-serif;
+      background-color: #ffe5b4;
       text-align: center;
-      padding: 60px 20px;
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 2em;
     }
+
     h1 {
-      color: #e6007e;
+      color: #ff6b81;
       font-size: 2em;
+      margin-bottom: 1em;
     }
-    .desc {
-      font-size: 1em;
-      margin: 10px 0 30px;
-    }
-    .start-btn {
-      font-weight: bold;
-      background: yellow;
-      padding: 6px 12px;
+
+    #roulette-container {
       display: inline-block;
+      position: relative;
+    }
+
+    #roulette {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    #startBtn {
       margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #ffd93d;
+      border: none;
+      font-size: 1em;
+      font-weight: bold;
+      color: #333;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #startBtn:hover {
+      background-color: #ffbc00;
     }
   </style>
 </head>
 <body>
-  <h1>🎉 はぴぴルーレット 🎉</h1>
-  <p class="desc">
-    スタートボタンを押して画面をタップすると<br>
-    ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
-    何度でもチャレンジしてね！
-  </p>
-  <div class="start-btn">スタート！</div>
+
+  <h1>🎉 ハピピルーレット 🎉</h1>
+
+  <div id="roulette-container">
+    <img id="roulette" src="hapipi-roulette.gif" alt="ハピピルーレット">
+  </div>
+
+  <div>
+    <button id="startBtn">ルーレットスタート！</button>
+  </div>
 
   <script>
-    // 日本時間の 2025年7月8日 23:59:59 を UTCに変換
-    const deadlineJST = new Date('2025-07-08T23:59:59+09:00').getTime();
-    const nowUTC = new Date().getTime();
+    document.getElementById('startBtn').addEventListener('click', function () {
+      const roulette = document.getElementById('roulette');
 
-    if (nowUTC > deadlineJST) {
-      document.body.innerHTML = "<h1>このページは現在ご利用いただけません。</h1>";
-    }
+      // 一時的にGIFをリセットして再再生
+      roulette.src = '';
+      setTimeout(() => {
+        roulette.src = 'hapipi-roulette.gif';
+      }, 50);
+    });
   </script>
+
 </body>
 </html>
