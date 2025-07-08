@@ -5,77 +5,73 @@
   <title>はぴぴルーレット</title>
   <style>
     body {
-      background-color: #ffe3ec;
-      font-family: sans-serif;
+      background-color: #ffe3ed; /* チェゴシム風ピンク */
+      font-family: "Arial", sans-serif;
       text-align: center;
-      padding: 40px 10px;
+      padding: 20px;
     }
+
     h1 {
-      color: #e6007e;
-      font-size: 2em;
+      color: deeppink;
+      font-size: 2rem;
     }
-    .desc {
-      font-size: 1em;
-      margin: 10px 0 30px;
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
     }
-    .start-btn {
-      font-weight: bold;
-      background: yellow;
-      padding: 6px 12px;
-      display: inline-block;
-      margin-top: 20px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    #preview, #roulette {
-      margin: 30px auto 0;
+
+    .media-wrapper {
+      width: 100%;
       max-width: 400px;
-      width: 80%;
-      display: block;
+      height: auto;
+      margin: 30px auto;
     }
-    #roulette {
+
+    #staticImage, #rouletteVideo {
+      width: 100%;
       display: none;
+    }
+
+    #staticImage {
+      display: block; /* 初期表示は画像 */
+    }
+
+    button {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>🎉 はぴぴルーレット 🎉</h1>
-  <p class="desc">
-    スタートボタンを押して画面をタップすると<br>
+  <div class="container">
+    <h1>🎉 はぴぴルーレット 🎉</h1>
+    <p>スタートボタンを押して画面をタップすると<br>
     ゴシムちゃんからポジティブメッセージが表示されるよ♪<br>
-    何度でもチャレンジしてね！
-  </p>
+    何度でもチャレンジしてね！</p>
 
-  <!-- 初期表示のGIFや画像 -->
-  <img id="preview" src="./hapipi-roulette.gif" alt="ルーレット プレビュー">
+    <div class="media-wrapper">
+      <img id="staticImage" src="hapipi-roulette.gif" alt="静止画">
+      <video id="rouletteVideo" src="hapipi-roulette.mp4" autoplay muted playsinline></video>
+    </div>
 
-  <div class="start-btn" onclick="startRoulette()">スタート！</div>
-
-  <!-- スタート後に表示される動画 -->
-  <video id="roulette" muted playsinline loop>
-    <source src="./hapipi-roulette.mp4" type="video/mp4">
-    お使いのブラウザは video タグをサポートしていません。
-  </video>
+    <button onclick="startRoulette()">スタート！</button>
+  </div>
 
   <script>
-    const video = document.getElementById('roulette');
-    const preview = document.getElementById('preview');
-    let isPlaying = false;
-
     function startRoulette() {
-      preview.style.display = 'none';     // GIFを非表示
-      video.style.display = 'block';      // 動画を表示
-      video.load();
+      const img = document.getElementById("staticImage");
+      const video = document.getElementById("rouletteVideo");
+      img.style.display = "none";
+      video.style.display = "block";
+      video.currentTime = 0;
       video.play();
-      isPlaying = true;
     }
-
-    video.addEventListener('click', () => {
-      if (isPlaying) {
-        video.pause();
-        isPlaying = false;
-      }
-    });
   </script>
 </body>
 </html>
